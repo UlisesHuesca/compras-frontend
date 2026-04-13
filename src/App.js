@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Container, CssBaseline, Button, Stack, ThemeProvider } from "@mui/material";
+import theme from "./theme";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import ComprasResumenPage from "./pages/ComprasResumenPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/compras/resumen" replace />} />
+          <Route path="/compras/resumen" element={<ComprasResumenPage />} />
+         
+        </Routes>
+      </Container>
+    </ThemeProvider>
   );
 }
 

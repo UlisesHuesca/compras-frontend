@@ -9,6 +9,7 @@ import {
 import ComprasResumenFiltros from "./ComprasResumenFiltros";
 import ComprasResumenTabla from "./ComprasResumenTabla";
 import ComprasResumenChart from "./ComprasResumenChart";
+import logoSavia from "../assets/SAVIA_Logo.jpg";
 
 const API_URL = "/api/compras-resumen-api/";
 const DISTRITOS_API_URL = "/api/distritos_api";
@@ -204,8 +205,24 @@ useEffect(() => {
             color: "secondary.contrastText",
             px: 3,
             py: 2,
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
           }}
         >
+          <Box
+            component="img"
+            src={logoSavia}
+            alt="Logo SAVIA"
+            sx={{
+              height: 48,
+              width: "auto",
+              objectFit: "contain",
+              borderRadius: 1,
+              p: 0.5,
+            }}
+          />
+
           <Typography variant="h4" fontWeight={700} sx={{ color: "white" }}>
             Resumen de Compras | Solo proveedores de servicios
           </Typography>

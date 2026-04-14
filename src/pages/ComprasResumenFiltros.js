@@ -73,21 +73,35 @@ function ComprasResumenFiltros({
           onChange={handleChange}
         /> */}
       </Box>
-        <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap", mb: 3 }}>
-          <SlicerAnio value={filters.anio} onChange={handleChange} />
-          <SlicerPagada value={filters.pagada} onChange={handleChange} />
-          <SlicerDistrito
-            value={filters.distrito}
-            onChange={handleChange}
-            distritos={distritos}
-          />
-        </Box>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, minmax(220px, 1fr))",
+            md: "repeat(3, minmax(220px, 1fr))",
+            lg: "repeat(4, minmax(220px, 1fr))",
+          },
+          gap: 2,
+          mb: 3,
+          width: "100%",
+        }}
+      >
+        <SlicerAnio value={filters.anio} onChange={handleChange} />
+        <SlicerPagada value={filters.pagada} onChange={handleChange} />
+        <SlicerDistrito
+          value={filters.distrito}
+          onChange={handleChange}
+          distritos={distritos}
+        />
+        
+      </Box>
 
 
       <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-        <Button variant="contained" onClick={handleBuscar}>
+        {/*<Button variant="contained" onClick={handleBuscar}>
           Buscar
-        </Button>
+        </Button>*/}
 
         <Button variant="outlined" onClick={handleLimpiar}>
           Limpiar

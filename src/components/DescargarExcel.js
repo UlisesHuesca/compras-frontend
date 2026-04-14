@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 
-export default function DescargarExcel({ apiUrl, filters, token, setError }) {
+export default function DescargarExcel({ apiUrl, filters, setError }) {
   const [loading, setLoading] = useState(false);
 
   const handleDescargarExcel = async () => {
@@ -28,9 +28,11 @@ export default function DescargarExcel({ apiUrl, filters, token, setError }) {
       const response = await fetch(finalUrl, {
         method: "GET",
         headers: {
-          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
         },
-      });
+        credentials: "include",
+        },
+      );
 
       console.log("status:", response.status);
       console.log("content-type:", response.headers.get("content-type"));

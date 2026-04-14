@@ -10,10 +10,10 @@ import ComprasResumenFiltros from "./ComprasResumenFiltros";
 import ComprasResumenTabla from "./ComprasResumenTabla";
 import ComprasResumenChart from "./ComprasResumenChart";
 
-const API_URL = "http://localhost:8000/api/compras-resumen-api/";
-const DISTRITOS_API_URL = "http://localhost:8000/api/distritos_api";
-const CHART_API_URL = "http://localhost:8000/api/compras-resumen-chart-proveedores/";
-const TOKEN = "07b6f65dde961d3090fdf91eba97db062fd3cd66";
+const API_URL = "/api/compras-resumen-api/";
+const DISTRITOS_API_URL = "/api/distritos_api";
+const CHART_API_URL = "/api/compras-resumen-chart-proveedores/";
+
 
 export default function ComprasResumenPage() {
   const [rows, setRows] = useState([]);
@@ -49,12 +49,15 @@ export default function ComprasResumenPage() {
           params.append(key, value);
         }
       });
-
+      const url = `${API_URL}?${params.toString()}`;
+      console.log("🟢 URL:", url);
+      
       const response = await fetch(`${API_URL}?${params.toString()}`, {
+        
         headers: {
-          Authorization: `Token ${TOKEN}`,
           "Content-Type": "application/json",
         },
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -87,9 +90,9 @@ export default function ComprasResumenPage() {
 
       const response = await fetch(`${CHART_API_URL}?${params.toString()}`, {
         headers: {
-          Authorization: `Token ${TOKEN}`,
           "Content-Type": "application/json",
         },
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -110,8 +113,9 @@ export default function ComprasResumenPage() {
     try {
       const response = await fetch(DISTRITOS_API_URL, {
         headers: {
-          Authorization: `Token ${TOKEN}`,
+          "Content-Type": "application/json",
         },
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -218,7 +222,6 @@ useEffect(() => {
             handleShowChart={handleShowChart}
             viewMode={viewMode}
             apiUrl={API_URL}
-            token={TOKEN}
           />
         </Box>
       </Paper>

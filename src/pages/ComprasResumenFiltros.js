@@ -27,7 +27,6 @@ function ComprasResumenFiltros({
   handleShowChart,
   viewMode,
   apiUrl,
-  token,
 }) {
    
 
@@ -104,7 +103,6 @@ function ComprasResumenFiltros({
         <DescargarExcel
           apiUrl={apiUrl.replace("compras-resumen-api", "compras-resumen-excel")}
           filters={filters}
-          token={token}
         />
 
         <Button

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:8000/api/compras_api";
+const API_URL = "/api/compras_api";
 
 export default function ComprasPage() {
   const [rows, setRows] = useState([]);
@@ -15,14 +15,15 @@ export default function ComprasPage() {
     try {
       setLoading(true);
 
-      const token = "07b6f65dde961d3090fdf91eba97db062fd3cd66";
+      //const token = "07b6f65dde961d3090fdf91eba97db062fd3cd66";
 
       const response = await fetch(
         `${API_URL}?page=${page}&per_page=${perPage}`,
         {
           headers: {
-            Authorization: `Token ${token}`,
+             "Content-Type": "application/json",
           },
+          credentials: "include",
         }
       );
 

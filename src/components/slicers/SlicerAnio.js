@@ -13,7 +13,7 @@ export default function SlicerAnio({ value, onChange }) {
         backgroundColor: "#fff",
         boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
         p: 1.5,
-        minWidth: 220,
+        minWidth: 0,
         width: "100%",
       }}
     >

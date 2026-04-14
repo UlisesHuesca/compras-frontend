@@ -10,7 +10,7 @@ export default function SlicerDistrito({ value, onChange, distritos = [] }) {
         backgroundColor: "#fff",
         boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
         p: 1.5,
-        minWidth: 370,
+        minWidth: 0,
         width: "100%",
       }}
     >

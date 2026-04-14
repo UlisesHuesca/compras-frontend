@@ -19,12 +19,12 @@ function ComprasResumenChart({ data = [] }) {
       </Typography>
 
       {data.length > 0 ? (
-        <Box sx={{ width: "100%", height: 520 }}>
+        <Box sx={{ width: "100%", height: { xs: 420, md: 520 } }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={data}
               layout="vertical"
-              margin={{ top: 10, right: 30, left: 120, bottom: 10 }}
+              margin={{ top: 10, right: 20, left: 20, bottom: 10 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
@@ -34,14 +34,14 @@ function ComprasResumenChart({ data = [] }) {
               <YAxis
                 type="category"
                 dataKey="label"
-                width={260}
-                tick={{ fontSize: 12 }}
+                width={window.innerWidth < 600 ? 120 : 260}
+                tick={{ fontSize: 11 }}
               />
               <Tooltip
                 formatter={(value) => formatMoney(value)}
                 labelFormatter={(label) => `Proveedor: ${label}`}
               />
-              <Bar dataKey="monto_total" radius={[0, 6, 6, 0]}>
+              <Bar dataKey="monto_total" radius={[0, 6, 6, 0]} fill="#1f4e79" >
                 {data.map((_, index) => (
                   <Cell key={`cell-${index}`} />
                 ))}

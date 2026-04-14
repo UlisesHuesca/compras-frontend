@@ -203,11 +203,12 @@ useEffect(() => {
           sx={{
             backgroundColor: "secondary.main",
             color: "secondary.contrastText",
-            px: 3,
-            py: 2,
+            px: { xs: 2, md: 3 },
+            py: { xs: 1.5, md: 2 },
             display: "flex",
-            alignItems: "center",
-            gap: 2,
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: { xs: "flex-start", sm: "center" },
+            gap: 1.5,
           }}
         >
           <Box
@@ -215,15 +216,21 @@ useEffect(() => {
             src={logoSavia}
             alt="Logo SAVIA"
             sx={{
-              height: 48,
+              height: { xs: 60, md: 48 },
               width: "auto",
-              objectFit: "contain",
+              
               borderRadius: 1,
               p: 0.5,
             }}
           />
 
-          <Typography variant="h4" fontWeight={700} sx={{ color: "white" }}>
+          <Typography 
+            sx= {{
+              color: "white", 
+              fontWeight: 700,
+              fontSize: { xs: "1.05rem", sm: "1.6rem", md: "2rem" }, 
+              lineHeight: 1.15,
+               }}>
             Resumen de Compras | Solo proveedores de servicios
           </Typography>
         </Box>

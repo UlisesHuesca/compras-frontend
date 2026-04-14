@@ -8,7 +8,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container maxWidth="xl" 
+      sx={{ 
+        py: { xs: 1.5, sm: 3, md: 4 },
+        px: { xs: 1, sm: 2, md: 3 }, 
+        }}>
           <ComprasResumenPage />
       </Container>
     </ThemeProvider>

@@ -10,6 +10,10 @@ import {
   ToggleButtonGroup,
   ToggleButton,
 } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTable } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar } from "@fortawesome/free-solid-svg-icons";
+
 import DescargarExcel from "../components/DescargarExcel";
 import SlicerAnio from "../components/slicers/SlicerAnio";
 import SlicerMes from "../components/slicers/SlicerMes";
@@ -79,8 +83,7 @@ function ComprasResumenFiltros({
           gridTemplateColumns: {
             xs: "1fr",
             sm: "repeat(2, minmax(220px, 1fr))",
-            md: "repeat(3, minmax(220px, 1fr))",
-            lg: "repeat(4, minmax(220px, 1fr))",
+            md: "repeat(3, minmax(240px, 1fr))",
           },
           gap: 2,
           mb: 3,
@@ -110,21 +113,47 @@ function ComprasResumenFiltros({
         <Button
           variant={viewMode === "table" ? "contained" : "outlined"}
           onClick={handleShowTable}
-        >
-          Ver tabla
-        </Button>
+          sx={{
+            color: viewMode === "table" ? "#fff" : "#1f4e79",
+            borderColor: "#1f4e79",
+            backgroundColor: viewMode === "table" ? "#1f4e79" : "transparent",
 
+            "&:hover": {
+              backgroundColor:
+                viewMode === "table"
+                  ? "#163a5c"
+                  : "rgba(31,78,121,0.08)",
+              borderColor: "#1f4e79",
+              },
+            }}
+          >
+          <FontAwesomeIcon icon={faTable} 
+            style={{ fontSize: "1.6rem" }}
+          />
+          </Button>
+
+          <Button
+            variant={viewMode === "chart" ? "contained" : "outlined"}
+            onClick={handleShowChart}
+            sx={{
+              color: viewMode === "chart" ? "#fff" : "#1f4e79",
+              borderColor: "#1f4e79",
+              backgroundColor: viewMode === "chart" ? "#1f4e79" : "transparent",
+
+              "&:hover": {
+                backgroundColor:
+                  viewMode === "chart"
+                    ? "#163a5c"
+                    : "rgba(31,78,121,0.08)",
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faChartBar} style={{ fontSize: "1.6rem" }} />
+          </Button>
         <DescargarExcel
           apiUrl={apiUrl.replace("compras-resumen-api", "compras-resumen-excel")}
           filters={filters}
         />
-
-        <Button
-          variant={viewMode === "chart" ? "contained" : "outlined"}
-          onClick={handleShowChart}
-        >
-          Ver gráfico
-        </Button>
       </Box>
     </>
   );
